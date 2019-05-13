@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Constanța Web Developers - Refactor Intro</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>php in secolul 21</h3>
+					<section data-markdown="markdown/php4.md"></section>
+					<section data-markdown="markdown/php5.md"></section>
+					<section data-markdown="markdown/php7.md"></section>
+				</section>
+				<section>
+					<section>why do php guys/gals rewrite</section>
+					<section>no oop</section>
+					<section>poor oop (php4-ish) static :: crap</section>
+				</section>
+				<section>
+					<section>
+						<q cite="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">As if source code rusted!</q>
+						<cite>– Joel Spolsky</cite>
+					</section>
+					<section>why not rewrite</section>
+					<section></section>
+				</section>
+				<section>
+					<section>how</section>
+					<section>phpfig & psr</section>
+					<section>composer autoload psr0 psr4 files classmap</section>
+				</section>
+				<section>
+					<section>strategy</section>
+					<section>upgrade latest ver old framework</section>
+					<section>try and namespace as much as possible</section>
+					<section>remove framework autoloader</section>
+					<section>decouple controller from business logic</section>
+					<section>skinny controller, fat model</section>
+					<section>DTOs as much as possible</section>
+					<section>skinny controller, skinny model, fat service</section>
+					<section>breakout into monorepo</section>
+					<section>refactor to psr interfaces|packagist virtual packages</section>
+				</section>
+				<section>
+					<section>no more frameworks, only components</section>
+					<section>GoF|the new testament|why</section>
+					<section>https://refactoring.guru/design-patterns</section>
+					<section>https://designpatternsphp.readthedocs.io/en/latest/</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				transition: 'slide',
+				showNotes: false,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
