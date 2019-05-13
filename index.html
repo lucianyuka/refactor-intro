@@ -25,32 +25,45 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-					<h3>php in secolul 21</h3>
+				<section id="short-php-history">
+					<h2>php in secolul 21</h2>
 					<section data-markdown="markdown/php4.md"></section>
 					<section data-markdown="markdown/php5.md"></section>
 					<section data-markdown="markdown/php7.md"></section>
 				</section>
 				<section>
-					<section>why do php guys/gals rewrite</section>
-					<section>no oop</section>
-					<section>poor oop (php4-ish) static :: crap</section>
+					<section>
+                        <h2>Why do php guys/gals rewrite?</h2>
+                        <p class="fragment">Experienţă precară. Design Patterns.</p>
+                        <p class="fragment">Pre PHP5 code, "spaghetti code"</p>
+                        <p class="fragment">Pre PHP5 static::methods, no IDE/Tools support</p>
+                        <p class="fragment">În orice limbaj, static::calls nu pot fi analizate</p>
+                        <p class="fragment">Abuzul de "auto-magic" al framework-urilor</p>
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/end-of-the-line.png" height="10%" alt="">
+                    </section>
 				</section>
 				<section>
 					<section>
 						<q cite="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">As if source code rusted!</q>
 						<cite>– Joel Spolsky</cite>
 					</section>
-					<section>why not rewrite</section>
-					<section></section>
+					<section>De ce să restucturăm si renovăm? (En. Refactor)</section>
+					<section>
+                        <p class="fragment"></p>
+                        <p class="fragment"></p>
+                        <p class="fragment"></p>
+                        <p class="fragment"></p>
+                    </section>
 				</section>
 				<section>
-					<section>how</section>
+					<section>Cum?</section>
 					<section>phpfig & psr</section>
 					<section>composer autoload psr0 psr4 files classmap</section>
 				</section>
 				<section>
-					<section>strategy</section>
+					<h2>strategy</h2>
 					<section>upgrade latest ver old framework</section>
 					<section>try and namespace as much as possible</section>
 					<section>remove framework autoloader</section>
