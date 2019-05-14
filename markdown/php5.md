@@ -6,5 +6,5 @@
   * 5.1 spl_autoload_register()
   * Reflection kickstarts "auto-magic" frameworks era
   * 5.3 Namespaces
-  * 5.4 Traits as multiple inheritence workaround
+  * 5.4 Traits as multiple inheritance workaround
   * Ciclu stabil de versiuni

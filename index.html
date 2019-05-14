@@ -25,6 +25,9 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+                <section>
+                    <p>Cătălin Nicolescu <br>(fac PHP "as a job" din 2005)</p>
+                </section>
 				<section id="short-php-history">
 					<h2>php in secolul 21</h2>
 					<section data-markdown="markdown/php4.md"></section>
@@ -35,13 +38,40 @@
 					<section>
                         <h2>Why do php guys/gals rewrite?</h2>
                         <p class="fragment">Experienţă precară. Design Patterns.</p>
-                        <p class="fragment">Pre PHP5 code, "spaghetti code"</p>
-                        <p class="fragment">Pre PHP5 static::methods, no IDE/Tools support</p>
-                        <p class="fragment">În orice limbaj, static::calls nu pot fi analizate</p>
-                        <p class="fragment">Abuzul de "auto-magic" al framework-urilor</p>
                     </section>
                     <section>
-                        <img class="stretch" src="img/end-of-the-line.png" height="10%" alt="">
+                        <p>Pre PHP5 static::methods, no IDE/Tools support</p>
+                        <p class="fragment">În orice limbaj, static::calls nu pot fi analizate</p>
+                    </section>
+                    <section>
+                        <p>Pre PHP5 code, "spaghetti code"</p>
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/legacy-entrypoint1.png">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/legacy-entrypoint2.png">
+                    </section>
+                    <section>
+                        <p>Abuzul de "auto-magic" al framework-urilor</p>
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/cakephp-automagic1.png">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/cakephp-automagic2.png">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/cakephp-automagic3.png">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/symfony28-automagic1.png">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/symfony28-automagic2.png">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/end-of-the-line.png" alt="">
                     </section>
 				</section>
 				<section>
@@ -49,36 +79,155 @@
 						<q cite="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">As if source code rusted!</q>
 						<cite>– Joel Spolsky</cite>
 					</section>
-					<section>De ce să restucturăm si renovăm? (En. Refactor)</section>
+					<section>De ce să restructurăm și renovăm? (En. Refactor)</section>
 					<section>
-                        <p class="fragment"></p>
-                        <p class="fragment"></p>
-                        <p class="fragment"></p>
-                        <p class="fragment"></p>
+                        <p>Eficiență. Time is money.</p>
+                        <p class="fragment">Business logic e verificat și constant. (DRY)</p>
+                        <p class="fragment">Înțelegere mai aprofundată a structurilor/frameworks.</p>
+                        <p class="fragment">Păstrăm unit tests.</p>
                     </section>
 				</section>
 				<section>
 					<section>Cum?</section>
-					<section>phpfig & psr</section>
-					<section>composer autoload psr0 psr4 files classmap</section>
+					<section>
+                        <h2>PHP-FIG & PSR</h2>
+                        <p>Framework Interop Group | PHP Standards <b><i>Recommendations</i></b></p>
+                    </section>
+					<section>
+                        <p>
+                            <a href="https://getcomposer.org/doc/04-schema.md#autoload">
+                                https://getcomposer.org/doc/04-schema.md#autoload
+                            </a>
+                        </p>
+                        <img class="stretch" src="img/composer-autoload.png">
+                    </section>
+                    <section>
+                        <h2>The toolbox</h2>
+                        <p>Uneltele se bazează pe capabilitățile AST și Reflection <br>
+                            pentru analiză statică si refactoring.
+                            În mare parte munca lui Nikita Popov (core developer)
+                        </p>
+                        <p>
+                            <pre>
+                                <code class="bash">$ pecl install ast</code>
+                            </pre>
+                        </p>
+                        <p>
+                            <pre>
+                                <code class="bash">$ composer require nikic/php-parser</code>
+                            </pre>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>PHPStan</h2>
+                        <p>"phpstan/phpstan"</p>
+                        <p>Ondřej Mirtes</p>
+                        <p>Backend "nikic/php-parser"</p>
+                        <p>Doar analiză statică. Ușor de extins prin custom rules.</p>
+                    </section>
+                    <section>
+                        <h2>Phan</h2>
+                        <p>"phan/phan"</p>
+                        <p>Rasmus Lerdorf, Andrew Morrison</p>
+                        <p>Backend "ext-ast"</p>
+                        <p>Doar analiză statică. Implementează microsoft/language-server-protocol<br>
+                            Usor integrabil in IDE. Mai rapid prin folosirea extensiei AST
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Rector</h2>
+                        <p>"rector/rector"</p>
+                        <p>Tomas Votruba</p>
+                        <p>Backend "nikic/php-parser" & "phpstan/phpstan"</p>
+                        <p>Refractoring! Foarte ușor de extins prin custom rules<br>
+                            Îmbină phpstan cu ast-parser => interfete familiare
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Phpactor</h2>
+                        <p>"phpactor/phpactor"</p>
+                        <p>Daniel Leech</p>
+                        <p>Backend propriu & "microsoft/tolerant-php-parser"</p>
+                        <p>Code completion pt IDE, introspecție, refactoring.<br>
+                            Nu a fost gândit să fie folosit stand-alone din cli.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Psalm</h2>
+                        <p>"vimeo/psalm"</p>
+                        <p>Matthew Brown, Vimeo</p>
+                        <p>Backend "nikic/php-parser"</p>
+                        <p>Analiză statică și refractoring. Extensibil (lipsă documentatie)<br>
+                            Limitat în refactoring, funcționează mai mult ca CodeSniffer sau PHPCsFixer
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Strategie ideală</h2>
+                        <p class="fragment">Upgrade framework/libs</p>
+                        <p class="fragment">Adăugam namespaces cât de mult putem</p>
+                        <p class="fragment">Scoatem orice referință la autoloader-ul framework</p>
+                        <p class="fragment">Înlocuim <b><u>globals</u></b> și <b><u>new</u></b> cu DI</p>
+                        <p class="fragment">skinny Controller, fat Model (use DTO)</p>
+                        <p class="fragment">skinny Controller, skinny Model, fat Service</p>
+                        <p class="fragment">Spargem structura în monorepo</p>
+                        <p class="fragment">Refactor to PSR interfaces (Packagist virtual packages)</p>
+                    </section>
+                    <section>
+                        <a href="https://packagist.org/?query=psr%2F&type=virtual-package">
+                            https://packagist.org/?query=psr%2F&type=virtual-package
+                        </a>
+                        <img class="stretch" src="img/packagist-virtual1.png" alt="">
+                    </section>
+                    <section>
+                        <a href="https://packagist.org/providers/psr/simple-cache-implementation">
+                            https://packagist.org/providers/psr/simple-cache-implementation
+                        </a>
+                        <img class="stretch" src="img/packagist-virtual2.png" alt="">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/require-psr1.png" alt="">
+                    </section>
+                    <section>
+                        <img class="stretch" src="img/require-psr2.png" alt="">
+                    </section>
 				</section>
 				<section>
-					<h2>strategy</h2>
-					<section>upgrade latest ver old framework</section>
-					<section>try and namespace as much as possible</section>
-					<section>remove framework autoloader</section>
-					<section>decouple controller from business logic</section>
-					<section>skinny controller, fat model</section>
-					<section>DTOs as much as possible</section>
-					<section>skinny controller, skinny model, fat service</section>
-					<section>breakout into monorepo</section>
-					<section>refactor to psr interfaces|packagist virtual packages</section>
-				</section>
-				<section>
-					<section>no more frameworks, only components</section>
-					<section>GoF|the new testament|why</section>
-					<section>https://refactoring.guru/design-patterns</section>
-					<section>https://designpatternsphp.readthedocs.io/en/latest/</section>
+					<section data-background-color="#ffffff">
+                        No more frameworks, just components
+                        <img class="stretch" src="img/hexagonal-architecture1.png" alt="">
+                    </section>
+                    <section>
+                        <h2>Symfony Components</h2>
+                        <p>
+                            « Symfony is a set of PHP Components, a Web Application framework, a Philosophy, and a Community <br>
+                            — all working together in harmony. »
+                        </p>
+                        <p>
+                            Peste 40 de componente folosibile individual, acoperind aproape toate nevoile unei aplicații.
+                        </p>
+                        <p>
+                            <img class="stretch" src="img/symfony-services.png" alt="">
+                        </p>
+                    </section>
+					<section>
+                        <div style="float:left;width:50%;">
+                            <ul>
+                                <li>a.k.a "The Gang of Four</li>
+                                <li>1994</li>
+                                <li>C++</li>
+                                <li class="fragment">Considerată "noul testament"</li>
+                                <li class="fragment">Considerată "junk"</li>
+                            </ul>
+                        </div>
+                        <div style="float:right;width:50%;">
+                            <img class="stretch" src="img/gof.jpg" alt="">
+                        </div>
+                    </section>
+					<section>
+                        <h2>Adaptări pentru PHP</h2>
+                        <p><a href="https://refactoring.guru/design-patterns">https://refactoring.guru/design-patterns</a></p>
+                        <p><a href="https://designpatternsphp.readthedocs.io/en/latest/">https://designpatternsphp.readthedocs.io/en/latest/</a></p>
+                    </section>
 				</section>
 			</div>
 		</div>
@@ -95,7 +244,7 @@
 				center: true,
 				hash: true,
 				transition: 'slide',
-				showNotes: false,
+                showNotes: false,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
